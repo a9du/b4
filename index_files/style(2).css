@@ -1,0 +1,78 @@
+/*
+Theme Name:  Salient
+Version:     11.0.1
+Description: An Ultra Responsive Multi-Purpose Theme.
+Theme URI:   https://themeforest.net/item/salient-responsive-multipurpose-theme/4363266
+Author:      ThemeNectar
+Author URI:  https://themeforest.net/user/themenectar
+License:     Custom license
+License URI: http://themeforest.net/licenses/terms/regular
+Text Domain: salient
+*/
+
+/*-------------------------------------------------------------------------*/
+/* Note: The theme CSS files are loaded through the /css/ folder. 
+/*-------------------------------------------------------------------------*/
+
+.c30p-fix {
+   padding: 0 2%; 
+}
+.c27p-fix {
+   padding: 0 2%; 
+}
+
+
+
+@media (min-width: 900px){
+	.c30p-fix {
+	   padding: 0 30%; 
+	} 
+	.c27p-fix {
+	   padding: 0 27%; 
+	}
+
+}
+
+@media (max-width: 689px){
+	
+	#row-trans3box.with-margin .col.span_12.dark.center > div {
+		padding-left: 0;
+		padding-right: 0;
+	}
+	
+	
+	#row-contact .contact-text > div > p{
+		text-align: center;
+	}
+	
+	.adjust-image-mobile .img-with-aniamtion-wrap img {
+		width:50%;
+	}
+/*	#row-demo > .col,
+	#row-demo > .col > .vc_column_container > .vc_column-inner {
+		margin: 0;
+	}
+*/	.mobile-row-reverse .col{
+		flex-direction: column-reverse;
+	}
+}
+
+@media (max-width: 1100px){
+	#row-trans3box.with-margin .col.span_12.dark.center {
+		padding-left: 0;
+		padding-right: 0;
+	}
+	
+	#row-trans3box.with-margin .col.span_12.dark.center > div {
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+}
+
+.set-cst-width{
+	width:100% !important;
+}
+
+#row-mobile {
+	margin-left: -10px !important;
+}
