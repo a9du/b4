@@ -1,0 +1,85 @@
+(function($) {
+  js = {
+    init: function() {
+		$(window).load(function() {
+			js.iframeSize();
+			
+			$('#notify-bar').hide();
+		
+			var notify = localStorage.getItem('notify');
+			if (localStorage) {
+			  if (notify == null) notify = 1;
+			
+			  if (notify == 1) {
+				  $('#notify-bar').show();
+			  }
+			  if (notify == 0) {
+				$('#notify-bar').hide();
+				$('html').removeClass('has-notify').css({paddingTop:0});
+				$('body').removeClass('bar-notify');
+				$('#header-outer').css({top:0});
+			  }
+			
+			  localStorage.setItem('notify', '1');
+			console.log('notify :'+notify);
+			}
+		});
+		$(window).resize(function() {
+			js.iframeSize();
+		});
+
+		
+		$('#notify-bar').appendTo('body').show(function(){
+			$('html').addClass('has-notify');
+			$('body').addClass('bar-notify');
+			var ntfHi = $('#notify-bar').outerHeight();
+			$('html.has-notify').css({paddingTop:ntfHi});
+			$('html.has-notify #header-outer').css({top:ntfHi});
+			
+			
+			$(window).scroll(function(){
+				var ntfHi = $('#notify-bar').outerHeight(),
+					wt = $(window).scrollTop();
+				if(wt>=ntfHi){
+					$('#header-outer').addClass('fixed');
+				} else {
+					$('#header-outer').removeClass('fixed');
+				}
+			});
+		});
+			
+		$('#notify-bar .nectar_icon a').click(function(e){
+			e.preventDefault();
+			$('#notify-bar').slideUp(200);
+			$('html').removeClass('has-notify').animate({paddingTop:0},200);
+			$('body').removeClass('bar-notify');
+			$('#header-outer').animate({top:0},200).addClass('fixed');
+			if (localStorage) {
+				localStorage.setItem('notify', '0');
+			}
+			console.log('notify :'+notify);
+		});
+		
+		if($('body').hasClass('page-home-test')) {
+		}
+		
+ 		jQuery("#input_8_3_3_container label").html('First name <span class="gfield_required">*</span>');
+ 		jQuery("#input_8_3_6_container label").html('Last name <span class="gfield_required">*</span>');
+
+
+		
+	},
+	iframeSize: function() {
+		$('.iframe-container').each(function(){
+			var wi = $(this).width(),
+				rat = wi/900;
+		//	$(this).find('iframe').addClass('sized').css({'transform':'scale('+rat+')'});
+		});
+	}
+  }
+  
+})(jQuery);
+
+jQuery(document).ready(function() { 
+	js.init();
+});
